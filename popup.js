@@ -34,7 +34,7 @@ async function updateSpeiseplan() {
             speiseplanDay.food.push({
                 content1: columns[0].innerText,
                 content2: columns[1].innerText,
-                calories: columns[2].innerText,
+                calories: columns[2].innerText.replace('p>','').replace(' *a', ''),
                 price: columns[3].innerText
             });
         });
@@ -43,15 +43,15 @@ async function updateSpeiseplan() {
     });
     
     chrome.storage.local.set({ "speiseplan": speiseplan });
-    render(mainTemplate(speiseplan), document.body);
+    render(mainTemplate(speiseplan), $('#speiseplan').get(0));
+    scrollToToday(200);
 }
 
 function loadSpeiseplan() {
     chrome.storage.local.get('speiseplan', (items) => {
         if (!items.speiseplan) return;
-        render(mainTemplate(items.speiseplan), document.body);
-        console.log("today: " + formatDay(new Date()));
-        scrollToToday();
+        render(mainTemplate(items.speiseplan), $('#speiseplan').get(0));
+        scrollToToday(0);
     });
 }
 
@@ -79,12 +79,11 @@ function formatDay(date) {
     return date.getFullYear() + '-' + (date.getMonth() + 1) + '-'+ date.getDate();
 }
 
-function scrollToToday() {
+function scrollToToday(delay) {
     var readableDate = formatDay(new Date());
-    console.log('Scrolling to ' + readableDate + ' @ ' + $('#' + readableDate).offset().top + 'px')
     $('#speiseplan').animate({
-        scrollTop: $('#' + readableDate).offset().top-55
-    },200);
+        scrollTop: $('#' + readableDate).position().top
+    }, delay);
 }
 
 const foodTemplate = (food) => html`
@@ -106,15 +105,9 @@ const dayTemplate = (day) => html`
     </tbody>`;
 
 const mainTemplate = (speiseplan) => html`
-    <div class="header">
-        <a href="https://fautzcatering.de/speiseplan/"></a><img class="logo" src="img/logo-32.png"></a>
-        <h4 class="main">Speiseplan</h4>
-    </div>
-    <div id="speiseplan" class="speiseplan">
-        <table>
-            ${speiseplan.map(day => dayTemplate(day))}
-        </table>
-    </div>
+    <table>
+        ${speiseplan.map(day => dayTemplate(day))}
+    </table>
 `;
 
 loadSpeiseplan();
