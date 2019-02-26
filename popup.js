@@ -81,7 +81,7 @@ function formatDay(date) {
 
 function scrollToToday(delay) {
     var readableDate = formatDay(new Date());
-    $('#speiseplan').animate({
+    $('#content').animate({
         scrollTop: $('#' + readableDate).position().top
     }, delay);
 }
