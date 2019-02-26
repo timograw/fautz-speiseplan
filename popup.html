@@ -62,7 +62,7 @@
             box-shadow: 2px 2px 8px #ccc;
         }
 
-        .speiseplan {
+        #content {
             overflow-y: auto;
             height: 530px;
             z-index: -1;
@@ -77,17 +77,32 @@
         h4.main {
             color: #93bf1c;
         }
+
+        footer {
+            font-size: 10px;
+            margin-top: 8px;
+            padding: 8px;
+            background: #eee;
+        }
     </style>
 
 </head>
 
 <body>
     <div class="header">
-        <a href="https://fautzcatering.de/speiseplan/"></a><img class="logo" src="img/logo-32.png"></a>
+        <a href="https://fautzcatering.de/speiseplan/"><img class="logo" src="img/logo-32.png"></a>
         <h4 class="main">Speiseplan</h4>
     </div>
-    <div id="speiseplan" class="speiseplan">
-        Lade...
+
+    <div id="content">
+        <div id="speiseplan" class="speiseplan">
+            Lade...
+        </div>
+
+        <footer>
+            <div>Daten von Fautz Catering</div>
+            <div><a href="https://github.com/timograw/fautz-speiseplan">Sourcecode auf GitHub</a></div>
+        </footer>
     </div>
 
     <script type="module" src="node_modules/jquery/dist/jquery.js"></script>
