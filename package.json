@@ -9,6 +9,7 @@
   "author": "Timo Graw",
   "license": "ISC",
   "dependencies": {
+    "bootstrap3": "^3.3.5",
     "jquery": "^3.3.1",
     "lit-html": "^1.0.0"
   }
