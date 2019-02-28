@@ -3,7 +3,19 @@ import {unsafeHTML} from './node_modules/lit-html/directives/unsafe-html.js';
 
 
 async function updateSpeiseplan() {
-    var speiseplanHtml = await getSpeiseplanHtml();
+    var currentSpeiseplan = await parseSpeiseplan('https://fautzcatering.de/speiseplan/');
+    var nextSpeiseplan = await parseSpeiseplan('https://fautzcatering.de/speiseplan-naechste-woche/');
+
+    var speiseplan = currentSpeiseplan.concat(nextSpeiseplan);
+    
+    chrome.storage.local.set({ "speiseplan": speiseplan });
+    render(mainTemplate(speiseplan), $('#speiseplan').get(0));
+    scrollToToday(200);
+}
+
+
+async function parseSpeiseplan(url) {
+    var speiseplanHtml = await getHtml(url);
 
     var htmlDoc = $.parseHTML(speiseplanHtml);  
 
@@ -21,7 +33,8 @@ async function updateSpeiseplan() {
             day: $(block).find('h4')[0].innerHTML,
             date: date,
             readableDate: formatDay(date),
-            food: []
+            food: [],
+            endOfWeek: (index == 4)
         };
 
         var table = $(block).find('.table.table-responsive').first();
@@ -41,11 +54,19 @@ async function updateSpeiseplan() {
 
         speiseplan.push(speiseplanDay);
     });
-    
-    chrome.storage.local.set({ "speiseplan": speiseplan });
-    render(mainTemplate(speiseplan), $('#speiseplan').get(0));
-    scrollToToday(200);
+
+    return speiseplan;
 }
+
+
+function getHtml(url) {
+    return new Promise((resolve, reject) => {
+            $.get(url, (speiseplanHtml) => {
+                resolve(speiseplanHtml)
+            });
+        })
+}
+
 
 function loadSpeiseplan() {
     chrome.storage.local.get('speiseplan', (items) => {
@@ -56,28 +77,54 @@ function loadSpeiseplan() {
 }
 
 
-function getSpeiseplanHtml() {
-    return new Promise((resolve, reject) => {
-            $.get('https://fautzcatering.de/speiseplan/', (speiseplanHtml) => {
-                resolve(speiseplanHtml)
-            });
-        })
+function foodIconForContent(content) {
+    content = content.toLowerCase();
+
+    if (content.includes("spaghetti"))
+        return "spaghetti";
+
+    if (content.includes("vegetarisch"))
+        return "vegetarian";
+
+    if (content.includes("burger"))
+        return "burger";
+
+    if (content.includes("pizza"))
+        return "pizza";
+
+    if (content.includes("hot dog"))
+        return "hotdog";
+
+    if (content.includes("currywurst"))
+        return "currywurst";
+
+    if (content.includes("curry") && !content.includes("wurst"))
+        return "curry";
+
+    if (content.includes("fisch") || content.includes("seelachs") || content.includes("hering"))
+        return "fish";
+
+    if (content.includes("rind"))
+        return "beef";
+
+    if (content.includes("hähnchen") || content.includes("huhn"))
+        return "chicken";
+
+    if (content.includes("schwein") || content.includes("krüstchen"))
+        return "pork";
+
+    if (content.includes("salat"))
+        return "salad";
+
+    return "food";
 }
 
 
-function isSameDay(date1, date2) {
-    return (date1.getFullYear() == date2.getFullYear() &&
-            date1.getMonth() == date2.getMonth() &&
-            date1.getDate() == date2.getDate())
-}
+const formatDay = (date) =>
+    date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
 
-function isToday(readableDate) {
-    return readableDate == formatDay(new Date());
-}
+const isToday = (readableDate) => (readableDate == formatDay(new Date()))
 
-function formatDay(date) {
-    return date.getFullYear() + '-' + (date.getMonth() + 1) + '-'+ date.getDate();
-}
 
 function scrollToToday(delay) {
     var readableDate = formatDay(new Date());
@@ -88,6 +135,7 @@ function scrollToToday(delay) {
 
 const foodTemplate = (food) => html`
     <tr>
+        <td class="icon"><img src="img/food/${foodIconForContent(food.content1 + " " + food.content2)}.png"></td>
         <td class="content"><b>${food.content1}</b> ${food.content2}</td>
         <td class="calories">${food.calories}</td>
         <td class="price">${unsafeHTML(food.price.replace("\n", "<br />"))}</td>
@@ -97,12 +145,21 @@ const foodTemplate = (food) => html`
 const dayTemplate = (day) => html`
     <thead id="${day.readableDate}" class="${isToday(day.readableDate)? 'current' : ''}">
         <tr>
-            <td colspan="3"><h4>${day.day} ${isToday(day.readableDate)? '- Heute' : ''}</h4></td>
+            <td colspan="4"><h4>${day.day} ${isToday(day.readableDate)? '- Heute' : ''}</h4></td>
         </tr>
     </thead>
     <tbody  class="${isToday(day.readableDate)? 'current' : ''}">
         ${day.food.map(food => foodTemplate(food))}
-    </tbody>`;
+    </tbody>
+    ${(day.endOfWeek)? endOfWeekTemplate():''}`;
+
+const endOfWeekTemplate = () => html`
+    <thead>
+        <tr>
+            <td colspan="4" class="weekend"><h4>Wochenende</h4></td>
+        </tr>
+    </thead>
+`;
 
 const mainTemplate = (speiseplan) => html`
     <table>
