@@ -83,14 +83,8 @@ function foodIconForContent(content) {
     if (content.includes("spaghetti"))
         return "spaghetti";
 
-    if (content.includes("vegetarisch"))
-        return "vegetarian";
-
     if (content.includes("burger"))
         return "burger";
-
-    if (content.includes("pizza"))
-        return "pizza";
 
     if (content.includes("hot dog"))
         return "hotdog";
@@ -101,20 +95,34 @@ function foodIconForContent(content) {
     if (content.includes("curry") && !content.includes("wurst"))
         return "curry";
 
-    if (content.includes("fisch") || content.includes("seelachs") || content.includes("hering"))
+    if (content.includes("fisch") ||
+        content.includes("seelachs") ||
+        content.includes("hering"))
         return "fish";
 
-    if (content.includes("rind"))
+    if (content.includes("rind") ||
+        content.includes("hackfleisch") ||
+        content.includes("steak"))
         return "beef";
 
-    if (content.includes("hähnchen") || content.includes("huhn"))
+    if (content.includes("hähnchen") ||
+        content.includes("huhn"))
         return "chicken";
 
-    if (content.includes("schwein") || content.includes("krüstchen"))
+    if (content.includes("schwein") ||
+        content.includes("krüstchen") ||
+        content.includes("schinken") ||
+        content.includes("wurst"))
         return "pork";
 
-    if (content.includes("salat"))
+    if (content.split("|")[0].includes("salat"))
         return "salad";
+
+    if (content.includes("pizza"))
+        return "pizza";
+
+    if (content.includes("vegetarisch"))
+        return "vegetarian";
 
     return "food";
 }
@@ -135,7 +143,7 @@ function scrollToToday(delay) {
 
 const foodTemplate = (food) => html`
     <tr>
-        <td class="icon"><img src="img/food/${foodIconForContent(food.content1 + " " + food.content2)}.png"></td>
+        <td class="icon"><img src="img/food/${foodIconForContent(food.content1 + "|" + food.content2)}.png"></td>
         <td class="content"><b>${food.content1}</b> ${food.content2}</td>
         <td class="calories">${food.calories}</td>
         <td class="price">${unsafeHTML(food.price.replace("\n", "<br />"))}</td>
