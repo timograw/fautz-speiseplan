@@ -6,22 +6,224 @@
     <link rel="stylesheet" href="node_modules/bootstrap3/dist/css/bootstrap.min.css">
     <style>
         /* mainlayout.css */
-        html,body{font:16px/1.5 'Ubuntu',sans-serif;;color:#666}body{}#wrapper{margin-top:30px;padding-bottom:40px;background-color:#fff;-webkit-box-shadow: 0px 4px 5px 3px rgba(102,102,102,0.3);-moz-box-shadow: 0px 4px 5px 3px rgba(102,102,102,0.3);box-shadow: 0px 4px 5px 3px rgba(102,102,102,0.3)}#header{padding-top:20px}h1,h2,h3{font-family:'Oswald',sans-serif;color:#93bf1c}h2{font-size:25px}h1.col-sm-offset-1,.speiseplan h1{margin-top:1.5em;margin-bottom:1em}#sticky_footer .container{padding-right:0;padding-left:0;background-color:#444;color:#fff}#sticky_footer h2{font-family:'Ubuntu',sans-serif;;color:#fff}#sticky_footer a{font-weight:normal;color:#fff}#sticky_footer a:hover{text-decoration:underline;color:#fff}.mainnav{float:right;padding-top:60px}.mainnav li{display:inline}.mainnav li a,.mainnav li span{padding:.75em 1em}.mainnav li a{text-decoration:none;color:#666}.mainnav li a:hover,.mainnav li span{border-bottom:2px solid #003782}.navbar-default{background-color:#fff;border:0}ul.navbar-nav{margin-top:29px}a#homeButton{width:158px;height:109px;background-image:url("../../files/layout_2016/logo.png");background-position:center center;background-repeat:no-repeat}a#homeButton span{display:none}.starthead{margin-top:20px;margin-bottom:20px;font-size:30px;line-height:1.3;font-weight:bold;color:#fff;letter-spacing:2px}.startbox{min-height:260px;color:#fff}.startbox h2,.startbox h3,.startbox p{padding-top:15px;padding-right:15px;padding-left:15px}.startbox p{font-size:14px}.startbox h2,.startbox h3{margin-top:.5em;margin-bottom:.2em;font-family:'Ubuntu',sans-serif;;color:#fff}.startbox h3{font-size:18px;font-weight:normal}.box1{background-color:#8ab31b}.box2{background-color:#93bf1c}.box3{background-color:#9ecc1f}.mod_sitemap ul,.mod_sitemap li{margin:0;padding:0;list-style-type:none}label{font-weight:normal}.mod_sitemap ul.level_2{margin-left:15px}.speiseplan td.col_0{width:40%}.speiseplan td.col_1{width:30%}.speiseplan td.col_2{width:20%}.speiseplan td.col_3{width:10%}.inhaltsstoffe{color:#aaa}.ce_dlh_googlemaps{position:relative}#dlh_googlemap_1{height:350px;width:100% !important}.cookiebar__button:hover,.cookiebar__button{background-color:#93bf1c;font-weight:normal}
+        html,
+        body {
+            font: 16px/1.5 'Ubuntu', sans-serif;
+            color: #666
+        }
+
+        #wrapper {
+            margin-top: 30px;
+            padding-bottom: 40px;
+            background-color: #fff;
+            -webkit-box-shadow: 0px 4px 5px 3px rgba(102, 102, 102, 0.3);
+            -moz-box-shadow: 0px 4px 5px 3px rgba(102, 102, 102, 0.3);
+            box-shadow: 0px 4px 5px 3px rgba(102, 102, 102, 0.3)
+        }
+
+        #header {
+            padding-top: 20px
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            color: #93bf1c
+        }
+
+        h2 {
+            font-size: 25px
+        }
+
+        h1.col-sm-offset-1,
+        .speiseplan h1 {
+            margin-top: 1.5em;
+            margin-bottom: 1em
+        }
+
+        #sticky_footer .container {
+            padding-right: 0;
+            padding-left: 0;
+            background-color: #444;
+            color: #fff
+        }
+
+        #sticky_footer h2 {
+            font-family: 'Ubuntu', sans-serif;
+            ;
+            color: #fff
+        }
+
+        #sticky_footer a {
+            font-weight: normal;
+            color: #fff
+        }
+
+        #sticky_footer a:hover {
+            text-decoration: underline;
+            color: #fff
+        }
+
+        .mainnav {
+            float: right;
+            padding-top: 60px
+        }
+
+        .mainnav li {
+            display: inline
+        }
+
+        .mainnav li a,
+        .mainnav li span {
+            padding: .75em 1em
+        }
+
+        .mainnav li a {
+            text-decoration: none;
+            color: #666
+        }
+
+        .mainnav li a:hover,
+        .mainnav li span {
+            border-bottom: 2px solid #003782
+        }
+
+        .navbar-default {
+            background-color: #fff;
+            border: 0
+        }
+
+        ul.navbar-nav {
+            margin-top: 29px
+        }
+
+        a#homeButton {
+            width: 158px;
+            height: 109px;
+            background-image: url("../../files/layout_2016/logo.png");
+            background-position: center center;
+            background-repeat: no-repeat
+        }
+
+        a#homeButton span {
+            display: none
+        }
+
+        .starthead {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 30px;
+            line-height: 1.3;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 2px
+        }
+
+        .startbox {
+            min-height: 260px;
+            color: #fff
+        }
+
+        .startbox h2,
+        .startbox h3,
+        .startbox p {
+            padding-top: 15px;
+            padding-right: 15px;
+            padding-left: 15px
+        }
+
+        .startbox p {
+            font-size: 14px
+        }
+
+        .startbox h2,
+        .startbox h3 {
+            margin-top: .5em;
+            margin-bottom: .2em;
+            font-family: 'Ubuntu', sans-serif;
+            ;
+            color: #fff
+        }
+
+        .startbox h3 {
+            font-size: 18px;
+            font-weight: normal
+        }
+
+        .box1 {
+            background-color: #8ab31b
+        }
+
+        .box2 {
+            background-color: #93bf1c
+        }
+
+        .box3 {
+            background-color: #9ecc1f
+        }
+
+        .mod_sitemap ul,
+        .mod_sitemap li {
+            margin: 0;
+            padding: 0;
+            list-style-type: none
+        }
+
+        label {
+            font-weight: normal
+        }
+
+        .mod_sitemap ul.level_2 {
+            margin-left: 15px
+        }
+
+        .speiseplan td.col_0 {
+            width: 40%
+        }
+
+        .speiseplan td.col_1 {
+            width: 30%
+        }
+
+        .speiseplan td.col_2 {
+            width: 20%
+        }
+
+        .speiseplan td.col_3 {
+            width: 10%
+        }
+
+        .inhaltsstoffe {
+            color: #aaa
+        }
+
+        .ce_dlh_googlemaps {
+            position: relative
+        }
+
+        #dlh_googlemap_1 {
+            height: 350px;
+            width: 100% !important
+        }
+
+        .cookiebar__button:hover,
+        .cookiebar__button {
+            background-color: #93bf1c;
+            font-weight: normal
+        }
+
         @media screen and (max-width: 1199px){
-        /* md.css */
-        .startbox{min-height:295px}
+            /* md.css */
+            .startbox{min-height:295px}
         }
         @media screen and (max-width: 991px){
-        /* sm.css */
-        body,html{font-size:.9em}h1{font-size:28px}h2{font-size:22px}ul.navbar-nav{margin-top:0}a#homeButton{width:114px;height:51px;background-image:url("../../files/layout_2016/Fautzlogo_kl.png")}.startbox{min-height:295px;padding-bottom:10px}.startbox h2{font-size:20px}.kochmuetze{width:107px;height:118px}.slogan{width:145px;height:54px}
+            /* sm.css */
+            body,html{font-size:.9em}h1{font-size:28px}h2{font-size:22px}ul.navbar-nav{margin-top:0}a#homeButton{width:114px;height:51px;background-image:url("../../files/layout_2016/Fautzlogo_kl.png")}.startbox{min-height:295px;padding-bottom:10px}.startbox h2{font-size:20px}.kochmuetze{width:107px;height:118px}.slogan{width:145px;height:54px}
         }
         @media screen and (max-width: 768px){
-        /* xs.css */
-        h1{font-size:24px}h2{font-size:18px}.startbox{min-height:200px}.starthead{font-size:23px}.kochmuetze{width:77px;height:84px}.slogan{width:119px;height:44px}
-        }
-        @media print{
-        /* drucken.css */
-        .noprint{display:none}#header{display:none}h1{margin-top:0;font-size:16px}body{font-size:11px}
+            /* xs.css */
+            h1{font-size:24px}h2{font-size:18px}.startbox{min-height:200px}.starthead{font-size:23px}.kochmuetze{width:77px;height:84px}.slogan{width:119px;height:44px}
         }
         
         body {
