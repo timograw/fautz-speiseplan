@@ -25,7 +25,7 @@ async function parseSpeiseplan(url) {
 
     blocks.each((index, block) => {
         var dateString = $(block).find('h4')[0].innerText;
-        var dateTokens = dateString.split(' ')[1].split('.');
+        var dateTokens = dateString.match(/\d{2}\.\d{2}\.\d{4}/)[0].split('.');
         var parseableDate = dateTokens[2] + '-' + dateTokens[1] + '-' + dateTokens[0] + 'T00:00:00';
         var date = new Date(parseableDate);
 
