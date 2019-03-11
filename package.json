@@ -1,6 +1,6 @@
 {
   "name": "fautz-speiseplan",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Zeigt den Fautz Catering Speiseplan für die aktuelle Woche an.",
   "main": "popup.html",
   "scripts": {
