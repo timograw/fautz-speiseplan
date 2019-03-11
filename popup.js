@@ -92,7 +92,7 @@ function foodIconForContent(content) {
     if (content.includes("currywurst"))
         return "currywurst";
 
-    if (content.includes("curry") && !content.includes("wurst"))
+    if (content.includes("curry") && !content.includes("wurst") && !content.includes("vegetarisch"))
         return "curry";
 
     if (content.includes("fisch") ||
@@ -106,7 +106,8 @@ function foodIconForContent(content) {
         return "beef";
 
     if (content.includes("hähnchen") ||
-        content.includes("huhn"))
+        content.includes("huhn") ||
+        content.includes("geflügel"))
         return "chicken";
 
     if (content.includes("schwein") ||
