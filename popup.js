@@ -81,51 +81,51 @@ function foodIconForContent(content) {
     content = content.toLowerCase();
 
     if (content.includes("spaghetti"))
-        return "spaghetti";
+        return "spaghetti.svg";
 
     if (content.includes("burger"))
-        return "burger";
+        return "hamburger.svg";
 
     if (content.includes("hot dog"))
-        return "hotdog";
+        return "hot-dog.svg";
 
     if (content.includes("currywurst"))
-        return "currywurst";
+        return "currywurst.png";
 
     if (content.includes("curry") && !content.includes("wurst") && !content.includes("vegetarisch"))
-        return "curry";
+        return "curry-rice.svg";
 
     if (content.includes("fisch") ||
         content.includes("seelachs") ||
         content.includes("hering"))
-        return "fish";
+        return "fish.svg";
 
     if (content.includes("rind") ||
         content.includes("hackfleisch") ||
         content.includes("steak"))
-        return "beef";
+        return "cut-of-meat.svg";
 
     if (content.includes("hähnchen") ||
         content.includes("huhn") ||
         content.includes("geflügel"))
-        return "chicken";
+        return "poultry-leg.svg";
 
     if (content.includes("schwein") ||
         content.includes("krüstchen") ||
         content.includes("schinken") ||
         content.includes("wurst"))
-        return "pork";
+        return "meat-on-bone.svg";
 
     if (content.split("|")[0].includes("salat"))
-        return "salad";
+        return "green-salad.svg";
 
     if (content.includes("pizza"))
-        return "pizza";
+        return "pizza.svg";
 
     if (content.includes("vegetarisch"))
-        return "vegetarian";
+        return "seedling.svg";
 
-    return "food";
+    return "pot-of-food.svg";
 }
 
 
@@ -144,7 +144,7 @@ function scrollToToday(delay) {
 
 const foodTemplate = (food) => html`
     <tr>
-        <td class="icon"><img src="img/food/${foodIconForContent(food.content1 + "|" + food.content2)}.png"></td>
+        <td class="icon"><img src="img/food/${foodIconForContent(food.content1 + "|" + food.content2)}"></td>
         <td class="content"><b>${food.content1}</b> ${food.content2}</td>
         <td class="calories">${food.calories}</td>
         <td class="price">${unsafeHTML(food.price.replace("\n", "<br />"))}</td>
