@@ -97,12 +97,14 @@ function foodIconForContent(content) {
 
     if (content.includes("fisch") ||
         content.includes("seelachs") ||
-        content.includes("hering"))
+        content.includes("hering") ||
+        content.includes("rotbarsch"))
         return "fish.svg";
 
     if (content.includes("rind") ||
         content.includes("hackfleisch") ||
-        content.includes("steak"))
+        content.includes("steak") ||
+        content.includes("pfannenfrikadelle"))
         return "cut-of-meat.svg";
 
     if (content.includes("hähnchen") ||
