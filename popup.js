@@ -83,6 +83,9 @@ function foodIconForContent(content) {
     if (content.includes("spaghetti"))
         return "spaghetti.svg";
 
+    if (content.includes("tacco"))
+        return "taco.svg";
+
     if (content.includes("burger"))
         return "hamburger.svg";
 
@@ -92,13 +95,16 @@ function foodIconForContent(content) {
     if (content.includes("currywurst"))
         return "currywurst.png";
 
-    if (content.includes("curry") && !content.includes("wurst") && !content.includes("vegetarisch"))
+    if (content.includes("curry") && !content.includes("wurst") && !content.includes("vegetarisch") && !content.includes("currydip"))
         return "curry-rice.svg";
 
-    if (content.includes("fisch") ||
+    if ((content.includes("fisch") ||
         content.includes("seelachs") ||
         content.includes("hering") ||
-        content.includes("rotbarsch"))
+        content.includes("rotbarsch") ||
+        content.includes("scholle") ||
+        content.includes("forelle")) &&
+        !content.includes("pizza"))
         return "fish.svg";
 
     if (content.includes("rind") ||
@@ -109,7 +115,8 @@ function foodIconForContent(content) {
 
     if (content.includes("hähnchen") ||
         content.includes("huhn") ||
-        content.includes("geflügel"))
+        content.includes("geflügel") ||
+        content.includes("pute"))
         return "poultry-leg.svg";
 
     if (content.includes("schwein") ||
