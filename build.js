@@ -5,7 +5,6 @@ let manifest = JSON.parse(fs.readFileSync('./manifest.json', 'utf8'));
 
 console.log("Packing fautz-catering " + manifest.version + "...");
 
-//let zip = new AdmZip();
 let archive = archiver('zip', {
     zlib: { level: 9 } // Sets the compression level.
   });
