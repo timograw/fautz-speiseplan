@@ -14,6 +14,6 @@
     "lit-html": "^1.0.0"
   },
   "devDependencies": {
-    "adm-zip": "^0.4.13"
+    "archiver": "^3.0.0"
   }
 }

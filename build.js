@@ -1,33 +1,40 @@
-const AdmZip = require('adm-zip');
 const fs = require('fs');
+const archiver = require('archiver');
 
 let manifest = JSON.parse(fs.readFileSync('./manifest.json', 'utf8'));
 
 console.log("Packing fautz-catering " + manifest.version + "...");
 
-let zip = new AdmZip();
+//let zip = new AdmZip();
+let archive = archiver('zip', {
+    zlib: { level: 9 } // Sets the compression level.
+  });
+
+let output = fs.createWriteStream('./dist/fautz-speiseplan-' + manifest.version + '.zip');
+
+archive.pipe(output);
 
 // main files
-zip.addLocalFile('./LICENSE');
-zip.addLocalFile('./manifest.json');
-zip.addLocalFile('./popup.html');
-zip.addLocalFile('./popup.js');
-zip.addLocalFile('./README.md');
+archive.file('LICENSE');
+archive.file('manifest.json');
+archive.file('popup.html');
+archive.file('popup.js');
+archive.file('README.md');
 
 // all images
-zip.addLocalFolder('./img', 'img');
+archive.directory('img/');
 
 // selected bootstrap dist files
-zip.addLocalFile('./node_modules/bootstrap3/dist/css/bootstrap.min.css', 'node_modules/bootstrap3/dist/css/');
-zip.addLocalFile('./node_modules/bootstrap3/dist/js/bootstrap.min.js', 'node_modules/bootstrap3/dist/js/');
+archive.file('node_modules/bootstrap3/dist/css/bootstrap.min.css');
+archive.file('node_modules/bootstrap3/dist/js/bootstrap.min.js');
 
 // jQuery min
-zip.addLocalFile('./node_modules/jquery/dist/jquery.min.js', 'node_modules/jquery/dist/');
+archive.file('node_modules/jquery/dist/jquery.min.js');
 
 // lit-html
-zip.addLocalFile('./node_modules/lit-html/lit-html.js', 'node_modules/lit-html/')
-zip.addLocalFolder('./node_modules/lit-html/lib', 'node_modules/lit-html/lib');
-zip.addLocalFolder('./node_modules/lit-html/directives', 'node_modules/lit-html/directives');
-zip.addLocalFolder('./node_modules/lit-html/polyfills', 'node_modules/lit-html/polyfills');
+archive.file('node_modules/lit-html/lit-html.js');
+archive.directory('node_modules/lit-html/lib');
+archive.directory('node_modules/lit-html/directives');
+archive.directory('node_modules/lit-html/polyfills');
 
-zip.writeZip('./dist/fautz-speiseplan-' + manifest.version + '.zip');
+archive.finalize();
