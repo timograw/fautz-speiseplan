@@ -44,12 +44,13 @@ async function parseSpeiseplan(url) {
         rows.each((rowIndex, row) =>  {
             var columns = $(row).find('td');
 
-            speiseplanDay.food.push({
-                content1: columns[0].innerText,
-                content2: columns[1].innerText,
-                calories: columns[2].innerText.replace('p>','').replace(' *a', ''),
-                price: columns[3].innerText
-            });
+            if (columns[0].innerHTML && columns[0].innerHTML != '&nbsp;')
+                speiseplanDay.food.push({
+                    content1: columns[0].innerText,
+                    content2: columns[1].innerText,
+                    calories: columns[2].innerText.replace('p>','').replace(' *a', ''),
+                    price: columns[3].innerText
+                });
         });
 
         speiseplan.push(speiseplanDay);
@@ -77,8 +78,11 @@ function loadSpeiseplan() {
 }
 
 
-function foodIconForContent(content) {
+function foodIconNameForContent(content) {
     content = content.toLowerCase();
+
+    if (content.includes("ostertage"))
+        return "rabbit.svg";
 
     if (content.includes("spaghetti"))
         return "spaghetti.svg";
@@ -131,7 +135,7 @@ function foodIconForContent(content) {
     if (content.includes("pizza"))
         return "pizza.svg";
 
-    if (content.includes("vegetarisch"))
+    if (content.includes("vegetarisch") || content.includes("kartoffelpuffer"))
         return "seedling.svg";
 
     return "pot-of-food.svg";
@@ -151,9 +155,10 @@ function scrollToToday(delay) {
     }, delay);
 }
 
+
 const foodTemplate = (food) => html`
     <tr>
-        <td class="icon"><img src="img/food/${foodIconForContent(food.content1 + "|" + food.content2)}"></td>
+        <td class="icon"><img src="img/food/${foodIconNameForContent(food.content1 + "|" + food.content2)}"></img></td>
         <td class="content"><b>${food.content1}</b> ${food.content2}</td>
         <td class="calories">${food.calories}</td>
         <td class="price">${unsafeHTML(food.price.replace("\n", "<br />"))}</td>
