@@ -81,7 +81,7 @@ function loadSpeiseplan() {
 function foodIconNameForContent(content) {
     content = content.toLowerCase();
 
-    if (content.includes("ostertage"))
+    if (content.includes("ostertage") || content.includes("ostermontag"))
         return "rabbit.svg";
 
     if (content.includes("spaghetti"))
@@ -99,7 +99,11 @@ function foodIconNameForContent(content) {
     if (content.includes("currywurst"))
         return "currywurst.png";
 
-    if (content.includes("curry") && !content.includes("wurst") && !content.includes("vegetarisch") && !content.includes("currydip"))
+    if (content.includes("curry") &&
+        !content.includes("wurst") &&
+        !content.includes("vegetarisch") &&
+        !content.includes("currydip") &&
+        !content.includes("curryreis"))
         return "curry-rice.svg";
 
     if ((content.includes("fisch") ||
@@ -138,7 +142,7 @@ function foodIconNameForContent(content) {
     if (content.includes("vegetarisch") || content.includes("kartoffelpuffer"))
         return "seedling.svg";
 
-    return "pot-of-food.svg";
+    return "seedling.svg";
 }
 
 
