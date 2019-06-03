@@ -84,6 +84,9 @@ function foodIconNameForContent(content) {
     if (content.includes("ostertage") || content.includes("ostermontag"))
         return "rabbit.svg";
 
+    if (content.includes("pfingstmontag"))
+        return "ghost.svg";
+
     if (content.includes("spaghetti"))
         return "spaghetti.svg";
 
