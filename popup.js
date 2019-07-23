@@ -135,7 +135,8 @@ function foodIconNameForContent(content) {
     if (content.includes("schwein") ||
         content.includes("krüstchen") ||
         content.includes("schinken") ||
-        content.includes("wurst"))
+        content.includes("wurst") ||
+        content.includes("gyros"))
         return "meat-on-bone.svg";
 
     if (content.split("|")[0].includes("salat"))
