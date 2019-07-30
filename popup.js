@@ -127,6 +127,7 @@ function foodIconNameForContent(content) {
         return "cut-of-meat.svg";
 
     if (content.includes("hähnchen") ||
+        content.includes("hänchen") ||
         content.includes("huhn") ||
         content.includes("geflügel") ||
         content.includes("pute"))
@@ -135,7 +136,8 @@ function foodIconNameForContent(content) {
     if (content.includes("schwein") ||
         content.includes("krüstchen") ||
         content.includes("schinken") ||
-        content.includes("wurst"))
+        content.includes("wurst") ||
+        content.includes("gyros"))
         return "meat-on-bone.svg";
 
     if (content.split("|")[0].includes("salat"))
