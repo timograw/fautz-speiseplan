@@ -11,9 +11,9 @@
   "dependencies": {
     "bootstrap3": "^3.3.5",
     "jquery": "^3.4.0",
-    "lit-html": "^1.0.0"
+    "lit-html": "^1.1.1"
   },
   "devDependencies": {
-    "archiver": "^3.0.0"
+    "archiver": "^3.0.3"
   }
 }
