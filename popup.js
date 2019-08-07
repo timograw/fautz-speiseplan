@@ -122,7 +122,7 @@ function foodIconNameForContent(content) {
 
     if (content.includes("rind") ||
         content.includes("hackfleisch") ||
-        content.includes("steak") ||
+        (content.includes("steak") && !content.includes("hähnchensteak")) ||
         content.includes("pfannenfrikadelle"))
         return "cut-of-meat.svg";
 
