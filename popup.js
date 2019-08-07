@@ -138,7 +138,8 @@ function foodIconNameForContent(content) {
         content.includes("schinken") ||
         content.includes("wurst") ||
         content.includes("gyros") ||
-        content.includes("käsegriller"))
+        content.includes("käsegriller") ||
+        content.includes("leberkäse"))
         return "meat-on-bone.svg";
 
     if (content.split("|")[0].includes("salat"))
