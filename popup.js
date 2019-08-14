@@ -130,7 +130,8 @@ function foodIconNameForContent(content) {
         content.includes("hänchen") ||
         content.includes("huhn") ||
         content.includes("geflügel") ||
-        content.includes("pute"))
+        content.includes("pute") ||
+        content.includes("hühnerfrikassee"))
         return "poultry-leg.svg";
 
     if (content.includes("schwein") ||
@@ -139,7 +140,8 @@ function foodIconNameForContent(content) {
         content.includes("wurst") ||
         content.includes("gyros") ||
         content.includes("käsegriller") ||
-        content.includes("leberkäse"))
+        content.includes("leberkäse") ||
+        content.includes("würstchen"))
         return "meat-on-bone.svg";
 
     if (content.split("|")[0].includes("salat"))
