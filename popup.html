@@ -301,11 +301,37 @@
             background: #eee;
             text-align: center;
         }
+
+        body.dark {
+            background: #333;
+            color: #fff;
+        }
+
+        .dark .header {
+            box-shadow: 2px 2px 8px #222;
+            background: #222;
+        }
+
+        .dark tbody.current, .dark thead.current {
+            background: #273307;
+        }
+
+        .dark td {
+            border-top: 1px solid #555;
+        }
+
+        .dark .weekend {
+            background: #222;
+        }
+
+        .dark footer {
+            background: #222;
+        }
     </style>
 
 </head>
 
-<body>
+<body class="dark-bak">
     <div class="header">
         <img class="logo" src="img/logo-32.png">
         <h4 class="main">Speiseplan</h4>
