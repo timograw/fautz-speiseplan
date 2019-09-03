@@ -116,13 +116,14 @@ function foodIconNameForContent(content) {
         content.includes("rotbarsch") ||
         content.includes("scholle") ||
         content.includes("forelle") ||
-        content.includes("meeresfrüchte")) &&
+        content.includes("meeresfrüchte") ||
+        content.includes("kibbelinge")) &&
         !content.includes("pizza"))
         return "fish.svg";
 
     if (content.includes("rind") ||
         content.includes("hackfleisch") ||
-        (content.includes("steak") && !content.includes("hähnchensteak")) ||
+        (content.includes("steak") && !content.includes("hähnchensteak") && !content.includes("schweinesteak")) ||
         content.includes("pfannenfrikadelle"))
         return "cut-of-meat.svg";
 
@@ -137,11 +138,12 @@ function foodIconNameForContent(content) {
     if (content.includes("schwein") ||
         content.includes("krüstchen") ||
         content.includes("schinken") ||
-        content.includes("wurst") ||
+        content.includes("wurst") ||   
         content.includes("gyros") ||
         content.includes("käsegriller") ||
         content.includes("leberkäse") ||
-        content.includes("würstchen"))
+        content.includes("würstchen") ||
+        content.includes("spanferkel"))
         return "meat-on-bone.svg";
 
     if (content.split("|")[0].includes("salat"))
