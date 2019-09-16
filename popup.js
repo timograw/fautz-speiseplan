@@ -102,7 +102,7 @@ function foodIconNameForContent(content) {
     if (content.includes("currywurst"))
         return "currywurst.png";
 
-    if (content.includes("pizza"))
+    if (content.includes("pizza") && !content.includes("pizzasuppe"))
         return "pizza.svg";
 
     if (content.includes("curry") &&
