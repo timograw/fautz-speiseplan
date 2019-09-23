@@ -132,6 +132,7 @@ function foodIconNameForContent(content) {
     if (content.includes("hähnchen") ||
         content.includes("hänchen") ||
         content.includes("huhn") ||
+        content.includes("hühner") ||
         content.includes("geflügel") ||
         content.includes("pute") ||
         content.includes("hühnerfrikassee") ||
