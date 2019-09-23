@@ -134,7 +134,8 @@ function foodIconNameForContent(content) {
         content.includes("huhn") ||
         content.includes("geflügel") ||
         content.includes("pute") ||
-        content.includes("hühnerfrikassee"))
+        content.includes("hühnerfrikassee") ||
+        content.includes("döner"))
         return "poultry-leg.svg";
 
     if (content.includes("schwein") ||
