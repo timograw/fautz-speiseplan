@@ -120,7 +120,8 @@ function foodIconNameForContent(content) {
         content.includes("scholle") ||
         content.includes("forelle") ||
         content.includes("meeresfrüchte") ||
-        content.includes("kibbelinge"))
+        content.includes("kibbelinge") ||
+        content.includes("barsch"))
         return "fish.svg";
 
     if (content.includes("rind") ||
@@ -132,11 +133,9 @@ function foodIconNameForContent(content) {
     if (content.includes("hähnchen") ||
         content.includes("hänchen") ||
         content.includes("huhn") ||
-        content.includes("hühner") ||
         content.includes("geflügel") ||
         content.includes("pute") ||
-        content.includes("hühnerfrikassee") ||
-        content.includes("döner"))
+        content.includes("hühnerfrikassee"))
         return "poultry-leg.svg";
 
     if (content.includes("schwein") ||
