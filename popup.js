@@ -81,12 +81,6 @@ function loadSpeiseplan() {
 function foodIconNameForContent(content) {
     content = content.toLowerCase();
 
-    if (content.includes("ostertage") || content.includes("ostermontag"))
-        return "rabbit.svg";
-
-    if (content.includes("pfingstmontag"))
-        return "ghost.svg";
-
     if (content.includes("spaghetti"))
         return "spaghetti.svg";
 
@@ -157,6 +151,15 @@ function foodIconNameForContent(content) {
 
     if (content.includes("feiertag"))
         return "party-popper.svg"
+
+    if (content.includes("ostertage") || content.includes("ostermontag"))
+        return "rabbit.svg";
+
+    if (content.includes("pfingstmontag"))
+        return "ghost.svg";
+
+    if (content.includes("reformationstag"))
+        return "jack-o-lantern.svg";
 
     return "seedling.svg";
 }
