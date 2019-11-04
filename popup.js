@@ -118,7 +118,8 @@ function foodIconNameForContent(content) {
         content.includes("huhn") ||
         content.includes("geflügel") ||
         content.includes("pute") ||
-        content.includes("hühnerfrikassee"))
+        content.includes("hühner") ||
+        content.includes("döner"))
         return "poultry-leg.svg";
 
     if (content.includes("schwein") ||
@@ -142,6 +143,9 @@ function foodIconNameForContent(content) {
         content.includes("kibbelinge") ||
         content.includes("barsch"))
         return "fish.svg";
+
+    if (content.includes("wild"))
+        return "boar.svg";
 
     if (content.split("|")[0].includes("salat"))
         return "green-salad.svg";
