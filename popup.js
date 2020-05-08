@@ -186,16 +186,16 @@ function scrollToToday(delay) {
 const foodTemplate = (food) => html`
     <tr>
         <td class="icon"><img src="img/food/${foodIconNameForContent(food.content1 + "|" + food.content2)}"></img></td>
-        <td class="content"><b>${food.content1}</b> ${food.content2}</td>
-        <td class="calories">${food.calories}</td>
-        <td class="price">${unsafeHTML(food.price.replace("\n", "<br />"))}</td>
+        <td class="content"><b>${DOMPurify.sanitize(food.content1)}</b> ${DOMPurify.sanitize(food.content2.replace('&nbsp;',' '))}</td>
+        <td class="calories">${DOMPurify.sanitize(food.calories).replace('&nbsp;',' ')}</td>
+        <td class="price">${unsafeHTML(DOMPurify.sanitize(food.price).replace("\n", "<br />"))}</td>
     </tr>
 `;
 
 const dayTemplate = (day) => html`
     <thead id="${day.readableDate}" class="${isToday(day.readableDate)? 'current' : ''}">
         <tr>
-            <td colspan="4"><h4>${day.day} ${isToday(day.readableDate)? '- Heute' : ''}</h4></td>
+            <td colspan="4"><h4>${DOMPurify.sanitize(day.day)} ${isToday(day.readableDate)? '- Heute' : ''}</h4></td>
         </tr>
     </thead>
     <tbody  class="${isToday(day.readableDate)? 'current' : ''}">

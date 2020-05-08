@@ -36,4 +36,7 @@ archive.directory('node_modules/lit-html/lib');
 archive.directory('node_modules/lit-html/directives');
 archive.directory('node_modules/lit-html/polyfills');
 
+// DOMpurify
+archive.file('node_modules/dompurify/dist/purify.min.js')
+
 archive.finalize();
