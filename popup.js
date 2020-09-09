@@ -1,4 +1,4 @@
-import {html, render} from './node_modules/lit-html/lit-html.js';
+    import {html, render} from './node_modules/lit-html/lit-html.js';
 import {unsafeHTML} from './node_modules/lit-html/directives/unsafe-html.js';
 
 
@@ -47,7 +47,7 @@ async function parseSpeiseplan(url) {
             if (columns[0].innerHTML && columns[0].innerHTML != '&nbsp;')
                 speiseplanDay.food.push({
                     content1: columns[0].innerText,
-                    content2: columns[1].innerText,
+                    content2: columns[1].innerText.replace('&nbsp;', ' '),
                     calories: columns[2].innerText.replace('p>','').replace(' *a', ''),
                     price: columns[3].innerText
                 });
