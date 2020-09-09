@@ -110,7 +110,8 @@ function foodIconNameForContent(content) {
     if (content.includes("rind") ||
         content.includes("hackfleisch") ||
         (content.includes("steak") && !content.includes("hähnchensteak") && !content.includes("schweinesteak")) ||
-        content.includes("pfannenfrikadelle"))
+        content.includes("pfannenfrikadelle") ||
+        content.includes("gulasch"))
         return "cut-of-meat.svg";
 
     if (content.includes("hähnchen") ||
@@ -130,7 +131,8 @@ function foodIconNameForContent(content) {
         content.includes("käsegriller") ||
         content.includes("leberkäse") ||
         content.includes("würstchen") ||
-        content.includes("spanferkel"))
+        content.includes("spanferkel") ||
+        content.includes("kasseler"))
         return "meat-on-bone.svg";
 
     if (content.includes("fisch") ||
