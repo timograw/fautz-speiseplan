@@ -9,6 +9,9 @@ let archive = archiver('zip', {
     zlib: { level: 9 } // Sets the compression level.
   });
 
+if (!fs.existsSync("./dist"))
+    fs.mkdirSync("./dist");
+
 let output = fs.createWriteStream('./dist/fautz-speiseplan-' + manifest.version + '.zip');
 
 archive.pipe(output);
