@@ -132,7 +132,8 @@ function foodIconNameForContent(content) {
         content.includes("leberkäse") ||
         content.includes("würstchen") ||
         content.includes("spanferkel") ||
-        content.includes("kasseler"))
+        content.includes("kasseler") ||
+        content.includes("mett"))
         return "meat-on-bone.svg";
 
     if (content.includes("fisch") ||
@@ -143,7 +144,8 @@ function foodIconNameForContent(content) {
         content.includes("forelle") ||
         content.includes("meeresfrüchte") ||
         content.includes("kibbelinge") ||
-        content.includes("barsch"))
+        content.includes("barsch") ||
+        content.includes("seehecht"))
         return "fish.svg";
 
     if (content.includes("wild"))
